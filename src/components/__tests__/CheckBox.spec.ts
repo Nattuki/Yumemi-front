@@ -6,7 +6,8 @@ describe('CheckBox', () => {
   it('コンポーネントが正しくレンダリングされる', () => {
     const wrapper = shallowMount(CheckBox, {
       props: {
-        prefCode: 1
+        code: 1,
+        name: '北海道'
       }
     })
 
@@ -17,7 +18,8 @@ describe('CheckBox', () => {
   it('emits機能が正しく動く', () => {
     const wrapper = shallowMount(CheckBox, {
       props: {
-        prefCode: 1
+        code: 1,
+        name: '北海道'
       }
     })
 
