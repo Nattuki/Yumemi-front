@@ -31,19 +31,20 @@
 import { ref } from 'vue'
 
 const props = defineProps<{
-  prefCode: number
+  code: number
+  name: string
 }>()
 
-const emits = defineEmits(['check', 'uncheck'])
+const emit = defineEmits(['check', 'uncheck'])
 
 const checked = ref<boolean>(false)
 
 const onCheckBoxClicked = () => {
   checked.value = !checked.value
   if (checked.value) {
-    emits('check', props.prefCode)
+    emit('check', props.code)
   } else {
-    emits('uncheck', props.prefCode)
+    emit('uncheck', props.code)
   }
 }
 </script>

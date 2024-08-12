@@ -1,4 +1,4 @@
-export type PrefecturesResponse = {
+type PrefectureResponse = {
   message: null
   result: {
     prefCode: number
@@ -6,7 +6,12 @@ export type PrefecturesResponse = {
   }[]
 }
 
-export type CompositionResponse = {
+type Prefecture = {
+  code: number
+  name: string
+}
+
+type CompositionResponse = {
   message: null
   result: {
     boundaryYear: number
@@ -15,7 +20,15 @@ export type CompositionResponse = {
       data: {
         year: number
         value: number
+        rate?: number
       }
     }[]
   }
 }
+
+const isPrefectureResponse = (prefs: object): prefs is PrefectureResponse => {
+  return 'message' in prefs && prefs.message === null && 'result' in prefs
+}
+
+export type { Prefecture }
+export { isPrefectureResponse }
