@@ -1,11 +1,7 @@
 <template>
-  <highcharts :options="chartsOptions"></highcharts>
+  <HomeView />
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const chartsOptions = ref({
-  series: [{ data: [1, 2, 3] }]
-})
+import HomeView from './views/HomeView.vue'
 </script>

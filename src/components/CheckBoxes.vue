@@ -1,7 +1,8 @@
 <template>
-  <div :class="$style.container">
+  <div :class="$style.container" data-testid="checkBoxesContainer">
     <CheckBox
       v-for="pref in prefs"
+      :class="$style.checkBox"
       :key="pref.code"
       :code="pref.code"
       :name="pref.name"
@@ -44,4 +45,10 @@ onMounted(async () => {
 })
 </script>
 
-<style module></style>
+<style module>
+.container {
+}
+
+.checkBox {
+}
+</style>
