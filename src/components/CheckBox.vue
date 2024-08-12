@@ -48,7 +48,7 @@ const onCheckBoxClicked = () => {
 }
 </script>
 
-<style lang="scss" module>
+<style module>
 .container {
   width: 24px;
   height: 24px;
@@ -57,6 +57,6 @@ const onCheckBoxClicked = () => {
 
 .checked {
   border-radius: 4px;
-  background: $color-primary;
+  background: greenyellow;
 }
 </style>
