@@ -45,5 +45,5 @@ type Composition = {
   }[]
 }
 
-export type { Prefecture, CompositionResponse, Composition }
+export type { Prefecture, Composition }
 export { isPrefectureResponse, isCompositionResponse }
