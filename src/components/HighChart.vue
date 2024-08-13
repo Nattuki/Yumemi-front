@@ -55,7 +55,7 @@ const chartsOptions = ref({
 })
 </script>
 
-<style lang="scss" module>
+<style module>
 .container {
   display: flex;
   width: 960px;

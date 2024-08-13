@@ -41,7 +41,7 @@ import RadioCard from './RadioCard.vue'
 const display = defineModel<string>()
 </script>
 
-<style lang="scss" module>
+<style module>
 .container {
   display: flex;
   width: 960px;

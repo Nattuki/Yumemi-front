@@ -75,7 +75,7 @@ watch(display, () => {
 })
 </script>
 
-<style lang="scss" module>
+<style module>
 .wrapper {
   display: flex;
   padding: 32px;
