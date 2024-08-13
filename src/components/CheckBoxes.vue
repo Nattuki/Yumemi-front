@@ -5,8 +5,8 @@
       :class="$style.checkBox"
       :key="pref.code"
       :pref="pref"
-      @check="onBoxChecked"
-      @uncheck="onBoxUnchecked"
+      @check="(pref) => onBoxChecked(pref)"
+      @uncheck="(pref) => onBoxUnchecked(pref)"
     />
   </div>
 </template>

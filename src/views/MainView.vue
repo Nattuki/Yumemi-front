@@ -1,6 +1,7 @@
 <template>
   <div :class="$style.container" data-testid="mainViewContainer">
     <CheckBoxes v-model="prefChecked" @update="(prefs) => updateChart(prefs)" />
+    <DisplayOptions v-model="display" />
     <HighChart :data="compositionData" />
   </div>
 </template>
@@ -8,6 +9,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { isCompositionResponse } from '@/type/ResasApi'
+import DisplayOptions from '@/components/DisplayOptions.vue'
 import HighChart from '@/components/HighChart.vue'
 import CheckBoxes from '@/components/CheckBoxes.vue'
 import apiKey from '@/const/apiKey'
@@ -16,7 +18,7 @@ import type { Display } from '@/type/highcharts'
 
 const prefChecked = ref<Prefecture[]>([])
 const compositionData = ref<Composition[]>([])
-const dislay = ref<Display>('total')
+const display = ref<Display>('total')
 
 const updateChart = (prefs: Prefecture[]) => {
   compositionData.value = []
@@ -39,7 +41,7 @@ const updateChart = (prefs: Prefecture[]) => {
       )
       const compositionResponse = await res.json()
       if (isCompositionResponse(compositionResponse)) {
-        switch (dislay.value) {
+        switch (display.value) {
           case 'total':
             comp.info = compositionResponse.result.data[0]
             break
@@ -64,6 +66,10 @@ const updateChart = (prefs: Prefecture[]) => {
     }
   })
 }
+
+watch(display, () => {
+  updateChart(prefChecked.value)
+})
 </script>
 
 <style module>
