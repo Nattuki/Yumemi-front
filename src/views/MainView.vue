@@ -63,7 +63,6 @@ watch(prefChecked, (prefs) => {
       console.log('情報の取得は失敗した', err)
     }
   })
-  console.log(compositionData.value)
 })
 </script>
 

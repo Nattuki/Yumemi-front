@@ -5,14 +5,29 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
 import type { Composition } from '@/type/ResasApi'
-import type { Series } from 'highcharts'
+import type { ChartSeries } from '@/type/highcharts'
 
 const props = defineProps<{
   data: Composition[]
 }>()
 
+const seriesData = computed(() => {
+  let res: ChartSeries[] = []
+  props.data.forEach((data) => {
+    let series: ChartSeries = {
+      name: data.name,
+      data: []
+    }
+    data.info.data.forEach((v) => {
+      series.data.push(v.value)
+    })
+    res.push(series)
+  })
+  return res
+})
+
 const chartsOptions = ref({
-  series: [{ data: [1, 2, 3, 4, 5, 6] }]
+  series: seriesData
 })
 </script>
 
