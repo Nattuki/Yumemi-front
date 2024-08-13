@@ -29,10 +29,10 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import type { Prefecture } from '@/type/ResasApi'
 
 const props = defineProps<{
-  code: number
-  name: string
+  pref: Prefecture
 }>()
 
 const emit = defineEmits(['check', 'uncheck'])
@@ -42,9 +42,9 @@ const checked = ref<boolean>(false)
 const onCheckBoxClicked = () => {
   checked.value = !checked.value
   if (checked.value) {
-    emit('check', props.code)
+    emit('check', props.pref)
   } else {
-    emit('uncheck', props.code)
+    emit('uncheck', props.pref)
   }
 }
 </script>

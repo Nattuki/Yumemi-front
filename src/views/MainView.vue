@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.container" data-testid="mainViewContainer">
-    <CheckBoxes v-model="prefCodeChecked" />
+    <CheckBoxes v-model="prefChecked" />
     <HighChart :data="compositionResponse" />
   </div>
 </template>
@@ -11,9 +11,9 @@ import { isCompositionResponse } from '@/type/ResasApi'
 import HighChart from '@/components/HighChart.vue'
 import CheckBoxes from '@/components/CheckBoxes.vue'
 import apiKey from '@/const/apiKey'
-import type { CompositionResponse } from '@/type/ResasApi'
+import type { CompositionResponse, Prefecture } from '@/type/ResasApi'
 
-const prefCodeChecked = ref<number[]>([])
+const prefChecked = ref<Prefecture[]>([])
 const compositionResponse = ref<CompositionResponse>({
   message: null,
   result: {
@@ -22,11 +22,11 @@ const compositionResponse = ref<CompositionResponse>({
   }
 })
 
-watch(prefCodeChecked, (codes) => {
-  codes.forEach(async (code) => {
+watch(prefChecked, (prefs) => {
+  prefs.forEach(async (pref) => {
     try {
       const res = await fetch(
-        `https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?cityCode=-&prefCode=${code}`,
+        `https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?cityCode=-&prefCode=${pref.code}`,
         {
           headers: {
             'X-API-KEY': apiKey.X_API_KEY

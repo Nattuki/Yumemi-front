@@ -4,10 +4,9 @@
       v-for="pref in prefs"
       :class="$style.checkBox"
       :key="pref.code"
-      :code="pref.code"
-      :name="pref.name"
-      @check="(code) => prefCodeChecked.push(code)"
-      @uncheck="(code) => (prefCodeChecked = prefCodeChecked.filter((c) => c !== code))"
+      :pref="pref"
+      @check="(pref) => prefChecked.push(pref)"
+      @uncheck="(pref) => (prefChecked = prefChecked.filter((p) => p.code !== pref.code))"
     />
   </div>
 </template>
@@ -18,7 +17,7 @@ import CheckBox from '@/components/CheckBox.vue'
 import apiKey from '@/const/apiKey'
 import { isPrefectureResponse, type Prefecture } from '@/type/ResasApi'
 
-const prefCodeChecked = defineModel<number[]>({ default: [] })
+const prefChecked = defineModel<Prefecture[]>({ default: [] })
 const prefs = ref<Prefecture[]>([])
 
 onMounted(async () => {
