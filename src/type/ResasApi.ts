@@ -30,6 +30,10 @@ type CompositionResponse = {
   }
 }
 
+const isCompositionResponse = (comp: object): comp is CompositionResponse => {
+  return 'message' in comp && comp.message === null && 'result' in comp
+}
+
 type Composition = {
   name: string
   info: {
@@ -39,10 +43,6 @@ type Composition = {
       value: number
     }[]
   }[]
-}
-
-const isCompositionResponse = (comp: object): comp is CompositionResponse => {
-  return 'message' in comp && comp.message === null && 'result' in comp
 }
 
 export type { Prefecture, CompositionResponse, Composition }

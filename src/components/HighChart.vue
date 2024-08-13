@@ -4,11 +4,11 @@
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
-import type { CompositionResponse } from '@/type/ResasApi'
+import type { Composition } from '@/type/ResasApi'
 import type { Series } from 'highcharts'
 
 const props = defineProps<{
-  data: CompositionResponse
+  data: Composition[]
 }>()
 
 const chartsOptions = ref({

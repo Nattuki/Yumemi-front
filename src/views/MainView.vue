@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.container" data-testid="mainViewContainer">
     <CheckBoxes v-model="prefChecked" />
-    <HighChart :data="compositionResponse" />
+    <HighChart :data="compositionData" />
   </div>
 </template>
 
@@ -11,9 +11,10 @@ import { isCompositionResponse } from '@/type/ResasApi'
 import HighChart from '@/components/HighChart.vue'
 import CheckBoxes from '@/components/CheckBoxes.vue'
 import apiKey from '@/const/apiKey'
-import type { CompositionResponse, Prefecture } from '@/type/ResasApi'
+import type { CompositionResponse, Prefecture, Composition } from '@/type/ResasApi'
 
 const prefChecked = ref<Prefecture[]>([])
+const compositionData = ref<Composition[]>([])
 const compositionResponse = ref<CompositionResponse>({
   message: null,
   result: {
