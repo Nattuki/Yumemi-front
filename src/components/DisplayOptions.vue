@@ -63,4 +63,17 @@ const display = defineModel<string>()
     width: 292px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 320px;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .radioCard {
+    width: 300px;
+  }
+}
 </style>

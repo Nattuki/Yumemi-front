@@ -104,4 +104,16 @@ watch(display, () => {
     width: 600px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 320px;
+    border: 1px solid red;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-left: 32px;
+  }
+}
 </style>

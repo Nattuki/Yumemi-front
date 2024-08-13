@@ -77,4 +77,12 @@ const onBoxUnchecked = (pref: Prefecture) => {
     width: 600px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 320px;
+    gap: 16px 32px;
+    padding-left: 32px;
+  }
+}
 </style>
