@@ -1,21 +1,18 @@
 <template>
   <div :class="$style.container" data-testid="mainViewContainer">
     <CheckBoxes v-model="prefCodeChecked" />
-    <highcharts :options="chartsOptions"></highcharts>
+    <HighChart />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { isCompositionResponse } from '@/type/ResasApi'
+import HighChart from '@/components/HighChart.vue'
 import CheckBoxes from '@/components/CheckBoxes.vue'
 import apiKey from '@/const/apiKey'
 
 const prefCodeChecked = ref<number[]>([])
-
-const chartsOptions = ref({
-  series: [{ data: [1, 2, 3] }]
-})
 
 watch(prefCodeChecked, (codes) => {
   codes.forEach(async (code) => {
