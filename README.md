@@ -1,45 +1,54 @@
-# yumemi-front
+# Population Trends of Japan
 
-This template should help get you started developing with Vue 3 in Vite.
+## Developer Quick Start
 
-## Recommended IDE Setup
+Prerequisite: Node.js (recommended v20)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+1. Uninstall yarn or pnpm for corepack (if installed), and install corepack
 
-## Type Support for `.vue` Imports in TS
+You can skip this step if you have already installed corepack.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```shell
+npm uninstall -g yarn pnpm
+npm install -g corepack
 ```
 
-### Compile and Hot-Reload for Development
+2. Install necessary packages
 
-```sh
-npm run dev
+```shell
+pnpm install
 ```
 
-### Type-Check, Compile and Minify for Production
+### Available Commands
 
-```sh
-npm run build
+#### Dev Mode (hot reload)
+
+```shell
+pnpm dev
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+#### Build
 
-```sh
-npm run test:unit
+```shell
+pnpm build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## ディレクトリ構造
 
-```sh
-npm run lint
-```
+- src: ソースコード
+  - components: 一般のコンポーネント
+  - const: API keyなどのグローバル定数周り
+  - router: ルーティング周り
+  - type: 型定義周り
+  - views: route直下のコンポーネント
+  - App.vue
+  - main.ts
+
+## コンポーネント依存関係
+
+- MainView.vue
+  - CheckBoxes.vue
+    - CheckBox.vue
+  - DisplayOptions.vue
+    - RadioButton.vue
+  - ChartComponent.vue
