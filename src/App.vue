@@ -18,6 +18,7 @@ import { RouterView } from 'vue-router'
   flex-direction: column;
   height: 100%;
   width: 100%;
+  font-family: 'M PLUS 1p', sans-serif;
 }
 
 .header {
