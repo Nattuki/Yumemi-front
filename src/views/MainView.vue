@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.container" data-testid="mainViewContainer">
-    <CheckBoxes v-model="prefChecked" />
+    <CheckBoxes v-model="prefChecked" @update="(prefs) => updateChart(prefs)" />
     <HighChart :data="compositionData" />
   </div>
 </template>
@@ -18,7 +18,7 @@ const prefChecked = ref<Prefecture[]>([])
 const compositionData = ref<Composition[]>([])
 const dislay = ref<Display>('total')
 
-watch(prefChecked, (prefs) => {
+const updateChart = (prefs: Prefecture[]) => {
   compositionData.value = []
   prefs.forEach(async (pref) => {
     try {
@@ -63,7 +63,7 @@ watch(prefChecked, (prefs) => {
       console.log('情報の取得は失敗した', err)
     }
   })
-})
+}
 </script>
 
 <style module>

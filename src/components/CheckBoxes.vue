@@ -5,8 +5,8 @@
       :class="$style.checkBox"
       :key="pref.code"
       :pref="pref"
-      @check="(pref) => prefChecked.push(pref)"
-      @uncheck="(pref) => (prefChecked = prefChecked.filter((p) => p.code !== pref.code))"
+      @check="onBoxChecked"
+      @uncheck="onBoxUnchecked"
     />
   </div>
 </template>
@@ -16,6 +16,8 @@ import { ref, onMounted } from 'vue'
 import CheckBox from '@/components/CheckBox.vue'
 import apiKey from '@/const/apiKey'
 import { isPrefectureResponse, type Prefecture } from '@/type/ResasApi'
+
+const emit = defineEmits(['update'])
 
 const prefChecked = defineModel<Prefecture[]>({ default: [] })
 const prefs = ref<Prefecture[]>([])
@@ -42,6 +44,16 @@ onMounted(async () => {
     console.log('情報の取得は失敗した', err)
   }
 })
+
+const onBoxChecked = (pref: Prefecture) => {
+  prefChecked.value.push(pref)
+  emit('update', prefChecked.value)
+}
+
+const onBoxUnchecked = (pref: Prefecture) => {
+  prefChecked.value = prefChecked.value.filter((p) => p.code !== pref.code)
+  emit('update', prefChecked.value)
+}
 </script>
 
 <style module>
