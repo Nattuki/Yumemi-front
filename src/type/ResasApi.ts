@@ -6,6 +6,10 @@ type PrefectureResponse = {
   }[]
 }
 
+const isPrefectureResponse = (prefs: object): prefs is PrefectureResponse => {
+  return 'message' in prefs && prefs.message === null && 'result' in prefs
+}
+
 type Prefecture = {
   code: number
   name: string
@@ -26,9 +30,16 @@ type CompositionResponse = {
   }
 }
 
-const isPrefectureResponse = (prefs: object): prefs is PrefectureResponse => {
-  return 'message' in prefs && prefs.message === null && 'result' in prefs
+const isCompositionResponse = (comp: object): comp is CompositionResponse => {
+  return 'message' in comp && comp.message === null && 'result' in comp
 }
 
-export type { Prefecture }
-export { isPrefectureResponse }
+type Composition = {
+  data: {
+    year: number
+    value: number
+  }[]
+}
+
+export type { Prefecture, Composition }
+export { isPrefectureResponse, isCompositionResponse }
