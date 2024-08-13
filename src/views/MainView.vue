@@ -75,7 +75,7 @@ watch(display, () => {
 })
 </script>
 
-<style module>
+<style lang="scss" module>
 .wrapper {
   display: flex;
   padding: 32px;
@@ -92,9 +92,16 @@ watch(display, () => {
   align-items: flex-start;
   gap: 32px;
   align-self: stretch;
+  font-family: 'M PLUS 1p', sans-serif;
 }
 
 .title {
   margin: 0;
+}
+
+@media screen and (max-width: 960px) {
+  .container {
+    width: 600px;
+  }
 }
 </style>

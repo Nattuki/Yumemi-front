@@ -52,4 +52,15 @@ const display = defineModel<string>()
 .radioCard {
   width: 228px;
 }
+
+@media screen and (max-width: 960px) {
+  .container {
+    width: 600px;
+    flex-wrap: wrap;
+  }
+
+  .radioCard {
+    width: 292px;
+  }
+}
 </style>

@@ -71,4 +71,10 @@ const onBoxUnchecked = (pref: Prefecture) => {
   justify-content: stretch;
   gap: 8px;
 }
+
+@media screen and (max-width: 960px) {
+  .container {
+    width: 600px;
+  }
+}
 </style>

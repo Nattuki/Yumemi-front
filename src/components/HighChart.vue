@@ -61,4 +61,10 @@ const chartsOptions = ref({
   width: 960px;
   justify-content: center;
 }
+
+@media screen and (max-width: 960px) {
+  .container {
+    width: 600px;
+  }
+}
 </style>
