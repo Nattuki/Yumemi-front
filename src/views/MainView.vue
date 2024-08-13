@@ -43,18 +43,19 @@ watch(prefChecked, (prefs) => {
           case 'total':
             comp.info = compositionResponse.result.data[0]
             break
-          case 'productive':
+          case 'young':
             comp.info = compositionResponse.result.data[1]
             break
-          case 'elderly':
+          case 'productive':
             comp.info = compositionResponse.result.data[2]
             break
-          case 'young':
+          case 'elderly':
             comp.info = compositionResponse.result.data[3]
             break
           default:
             throw new Error('予期しないdisplayの型')
         }
+        compositionData.value.push(comp)
       } else {
         throw new Error('CompositionResponseに満たさない型')
       }
