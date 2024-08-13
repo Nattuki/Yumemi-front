@@ -1,13 +1,13 @@
 <template>
   <div :class="$style.container" data-testid="checkBoxesContainer">
-    <CheckBox
-      v-for="pref in prefs"
-      :class="$style.checkBox"
-      :key="pref.code"
-      :pref="pref"
-      @check="(pref) => onBoxChecked(pref)"
-      @uncheck="(pref) => onBoxUnchecked(pref)"
-    />
+    <div :class="$style.checkContainer" v-for="pref in prefs" :key="pref.code">
+      <CheckBox
+        :pref="pref"
+        @check="(pref) => onBoxChecked(pref)"
+        @uncheck="(pref) => onBoxUnchecked(pref)"
+      />
+      {{ pref.name }}
+    </div>
   </div>
 </template>
 
@@ -58,8 +58,17 @@ const onBoxUnchecked = (pref: Prefecture) => {
 
 <style module>
 .container {
+  display: flex;
+  width: 960px;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
-.checkBox {
+.checkContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
 }
 </style>

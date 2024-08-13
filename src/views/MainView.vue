@@ -78,7 +78,7 @@ watch(display, () => {
 .wrapper {
   display: flex;
   padding: 32px;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   flex: 1 0 0;
   align-self: stretch;
