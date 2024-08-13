@@ -25,7 +25,7 @@ type CompositionResponse = {
         year: number
         value: number
         rate?: number
-      }
+      }[]
     }[]
   }
 }
@@ -34,12 +34,5 @@ const isCompositionResponse = (comp: object): comp is CompositionResponse => {
   return 'message' in comp && comp.message === null && 'result' in comp
 }
 
-type Composition = {
-  data: {
-    year: number
-    value: number
-  }[]
-}
-
-export type { Prefecture, Composition }
+export type { Prefecture }
 export { isPrefectureResponse, isCompositionResponse }

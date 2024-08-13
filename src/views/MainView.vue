@@ -1,6 +1,8 @@
 <template>
-  <CheckBoxes v-model="prefCodeChecked" />
-  <highcharts :options="chartsOptions"></highcharts>
+  <div :class="$style.container" data-testid="mainViewContainer">
+    <CheckBoxes v-model="prefCodeChecked" />
+    <highcharts :options="chartsOptions"></highcharts>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -21,7 +23,7 @@ watch(prefCodeChecked, (codes) => {
   codes.forEach(async (code) => {
     try {
       const res = await fetch(
-        `https://opendata.resas-portal.go.jp/api/v1/prefectures?cityCode=-&prefCode=${code}`,
+        `https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?cityCode=-&prefCode=${code}`,
         {
           headers: {
             'X-API-KEY': apiKey.X_API_KEY
@@ -30,16 +32,7 @@ watch(prefCodeChecked, (codes) => {
       )
       const compositionResponse = await res.json()
       if (isCompositionResponse(compositionResponse)) {
-        compositionResponse.result.data.forEach((data) => {
-          const comp: Composition = {
-            data: []
-          }
-          comp.data.push({
-            year: data.data.year,
-            value: data.data.value
-          })
-          prefInfo.value.set(code, comp)
-        })
+        return
       } else {
         throw new Error('CompositionResponseに満たさない型')
       }
@@ -49,3 +42,8 @@ watch(prefCodeChecked, (codes) => {
   })
 })
 </script>
+
+<style module>
+.container {
+}
+</style>
