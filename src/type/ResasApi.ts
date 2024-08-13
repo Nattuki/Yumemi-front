@@ -34,5 +34,5 @@ const isCompositionResponse = (comp: object): comp is CompositionResponse => {
   return 'message' in comp && comp.message === null && 'result' in comp
 }
 
-export type { Prefecture }
+export type { Prefecture, CompositionResponse }
 export { isPrefectureResponse, isCompositionResponse }

@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.container" data-testid="mainViewContainer">
     <CheckBoxes v-model="prefCodeChecked" />
-    <HighChart />
+    <HighChart :data="compositionResponse" />
   </div>
 </template>
 
@@ -11,8 +11,16 @@ import { isCompositionResponse } from '@/type/ResasApi'
 import HighChart from '@/components/HighChart.vue'
 import CheckBoxes from '@/components/CheckBoxes.vue'
 import apiKey from '@/const/apiKey'
+import type { CompositionResponse } from '@/type/ResasApi'
 
 const prefCodeChecked = ref<number[]>([])
+const compositionResponse = ref<CompositionResponse>({
+  message: null,
+  result: {
+    boundaryYear: -1,
+    data: []
+  }
+})
 
 watch(prefCodeChecked, (codes) => {
   codes.forEach(async (code) => {
@@ -25,7 +33,7 @@ watch(prefCodeChecked, (codes) => {
           }
         }
       )
-      const compositionResponse = await res.json()
+      compositionResponse.value = await res.json()
       if (isCompositionResponse(compositionResponse)) {
         return
       } else {
