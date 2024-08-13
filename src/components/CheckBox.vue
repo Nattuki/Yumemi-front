@@ -44,6 +44,7 @@ const onCheckBoxClicked = () => {
   if (checked.value) {
     emit('check', props.pref)
   } else {
+    console.log(props.pref)
     emit('uncheck', props.pref)
   }
 }

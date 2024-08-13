@@ -6,6 +6,7 @@
       :name="props.name"
       :value="props.value"
       @change="model = props.value"
+      :checked="props.default"
     />
     <div :class="$style.container">
       <div :class="$style.title_wrapper">
@@ -20,12 +21,18 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
-  title: string
-  content: string
-  name: string
-  value: string
-}>()
+const props = withDefaults(
+  defineProps<{
+    title: string
+    content: string
+    name: string
+    value: string
+    default?: boolean
+  }>(),
+  {
+    default: false
+  }
+)
 
 const model = defineModel<string>()
 </script>

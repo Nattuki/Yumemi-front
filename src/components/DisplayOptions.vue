@@ -7,6 +7,7 @@
       content="total population"
       name="display"
       value="total"
+      default
     ></RadioCard>
     <RadioCard
       :class="$style.radioCard"
@@ -38,7 +39,7 @@
 <script lang="ts" setup>
 import RadioCard from './RadioCard.vue'
 
-const display = defineModel<string>()
+const display = defineModel<string>({ default: 'total' })
 </script>
 
 <style module>

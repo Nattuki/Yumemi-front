@@ -51,7 +51,12 @@ const onBoxChecked = (pref: Prefecture) => {
 }
 
 const onBoxUnchecked = (pref: Prefecture) => {
-  prefChecked.value = prefChecked.value.filter((p) => p.code !== pref.code)
+  prefChecked.value.forEach((val, index) => {
+    if (val.code === pref.code) {
+      prefChecked.value.splice(index, 1)
+    }
+  })
+  console.log(prefChecked.value)
   emit('update', prefChecked.value)
 }
 </script>
