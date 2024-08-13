@@ -1,6 +1,7 @@
 <template>
   <div :class="$style.wrapper">
     <div :class="$style.container" data-testid="mainViewContainer">
+      <h1 :class="$style.title">都道府県別人口の推移</h1>
       <CheckBoxes v-model="prefChecked" @update="(prefs) => updateChart(prefs)" />
       <DisplayOptions v-model="display" />
       <HighChart :data="compositionData" />
@@ -91,5 +92,9 @@ watch(display, () => {
   align-items: flex-start;
   gap: 32px;
   align-self: stretch;
+}
+
+.title {
+  margin: 0;
 }
 </style>
