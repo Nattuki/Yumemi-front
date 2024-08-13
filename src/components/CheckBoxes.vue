@@ -60,15 +60,15 @@ const onBoxUnchecked = (pref: Prefecture) => {
 .container {
   display: flex;
   width: 960px;
-  align-items: flex-start;
-  gap: 30px;
+  justify-content: start;
   flex-wrap: wrap;
+  gap: 16px 0;
 }
 
 .checkContainer {
+  width: 120px;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: stretch;
   gap: 8px;
 }
 </style>
