@@ -12,9 +12,11 @@ import HighChart from '@/components/HighChart.vue'
 import CheckBoxes from '@/components/CheckBoxes.vue'
 import apiKey from '@/const/apiKey'
 import type { Prefecture, Composition } from '@/type/ResasApi'
+import type { Display } from '@/type/highcharts'
 
 const prefChecked = ref<Prefecture[]>([])
 const compositionData = ref<Composition[]>([])
+const dislay = ref<Display>('total')
 
 watch(prefChecked, (prefs) => {
   compositionData.value = []
@@ -22,7 +24,10 @@ watch(prefChecked, (prefs) => {
     try {
       let comp: Composition = {
         name: pref.name,
-        info: []
+        info: {
+          label: '',
+          data: []
+        }
       }
       const res = await fetch(
         `https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?cityCode=-&prefCode=${pref.code}`,
@@ -34,10 +39,7 @@ watch(prefChecked, (prefs) => {
       )
       const compositionResponse = await res.json()
       if (isCompositionResponse(compositionResponse)) {
-        compositionResponse.result.data.forEach((info) => {
-          comp.info.push(info)
-        })
-        compositionData.value.push(comp)
+        comp.info = compositionResponse.result.data[0]
       } else {
         throw new Error('CompositionResponseに満たさない型')
       }

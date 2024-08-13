@@ -1,6 +1,8 @@
-type series = {
+type Series = {
   name: string
   data: number[]
 }[]
 
-export type { series }
+type Display = 'total' | 'productive' | 'young' | 'elderly'
+
+export type { Series, Display }

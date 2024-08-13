@@ -42,7 +42,7 @@ type Composition = {
       year: number
       value: number
     }[]
-  }[]
+  }
 }
 
 export type { Prefecture, Composition }
