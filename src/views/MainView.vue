@@ -39,7 +39,22 @@ watch(prefChecked, (prefs) => {
       )
       const compositionResponse = await res.json()
       if (isCompositionResponse(compositionResponse)) {
-        comp.info = compositionResponse.result.data[0]
+        switch (dislay.value) {
+          case 'total':
+            comp.info = compositionResponse.result.data[0]
+            break
+          case 'productive':
+            comp.info = compositionResponse.result.data[1]
+            break
+          case 'elderly':
+            comp.info = compositionResponse.result.data[2]
+            break
+          case 'young':
+            comp.info = compositionResponse.result.data[3]
+            break
+          default:
+            throw new Error('予期しないdisplayの型')
+        }
       } else {
         throw new Error('CompositionResponseに満たさない型')
       }
