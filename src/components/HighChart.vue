@@ -1,5 +1,7 @@
 <template>
-  <highcharts :options="chartsOptions"></highcharts>
+  <div :class="$style.container">
+    <highcharts :options="chartsOptions"></highcharts>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -53,4 +55,22 @@ const chartsOptions = ref({
 })
 </script>
 
-<style module></style>
+<style module>
+.container {
+  display: flex;
+  width: 960px;
+  justify-content: center;
+}
+
+@media screen and (max-width: 960px) {
+  .container {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 320px;
+  }
+}
+</style>

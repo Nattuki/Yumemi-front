@@ -58,6 +58,6 @@ const onCheckBoxClicked = () => {
 
 .checked {
   border-radius: 4px;
-  background: greenyellow;
+  background: #5cb860;
 }
 </style>

@@ -32,7 +32,7 @@ const model = defineModel<string>()
 
 <style module>
 .container {
-  box-shadow: inset 0 0 0 1px grey;
+  box-shadow: inset 0 0 0 1px #e2e2e2;
   border-radius: 4px;
   display: flex;
   padding: 16px;
@@ -43,11 +43,11 @@ const model = defineModel<string>()
 }
 
 .container:hover {
-  background-color: grey;
+  background-color: #eef7ee;
 }
 
 .input:checked + .container {
-  box-shadow: inset 0 0 0 3px greenyellow;
+  box-shadow: inset 0 0 0 3px #5cb860;
 }
 
 .title_wrapper {
@@ -58,7 +58,7 @@ const model = defineModel<string>()
 }
 
 .title {
-  color: black;
+  color: #1a1a1c;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -69,7 +69,7 @@ const model = defineModel<string>()
   font-size: 16px;
   text-align: left;
   align-self: stretch;
-  color: black;
+  color: #626264;
   font-size: 16px;
   font-weight: 500;
   line-height: normal;
@@ -92,8 +92,8 @@ const model = defineModel<string>()
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: black;
-  border: 2px solid black;
+  background-color: #f1f1f4;
+  border: 2px solid #e2e2e2;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -102,7 +102,7 @@ const model = defineModel<string>()
 }
 
 .input:checked + .container .title_wrapper .btn::before {
-  background-color: black;
+  background-color: #5cb860;
   border: none;
 }
 
@@ -111,7 +111,7 @@ const model = defineModel<string>()
   width: 50%;
   height: 50%;
   border-radius: 50%;
-  background-color: black;
+  background-color: #ffffff;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);

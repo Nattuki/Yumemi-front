@@ -1,8 +1,11 @@
 <template>
-  <div :class="$style.container" data-testid="mainViewContainer">
-    <CheckBoxes v-model="prefChecked" @update="(prefs) => updateChart(prefs)" />
-    <DisplayOptions v-model="display" />
-    <HighChart :data="compositionData" />
+  <div :class="$style.wrapper">
+    <div :class="$style.container" data-testid="mainViewContainer">
+      <h1 :class="$style.title">都道府県別人口の推移</h1>
+      <CheckBoxes v-model="prefChecked" @update="(prefs) => updateChart(prefs)" />
+      <DisplayOptions v-model="display" />
+      <HighChart :data="compositionData" />
+    </div>
   </div>
 </template>
 
@@ -73,6 +76,44 @@ watch(display, () => {
 </script>
 
 <style module>
+.wrapper {
+  display: flex;
+  padding: 32px;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
 .container {
+  display: flex;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  align-self: stretch;
+  font-family: 'M PLUS 1p', sans-serif;
+}
+
+.title {
+  margin: 0;
+}
+
+@media screen and (max-width: 960px) {
+  .container {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 320px;
+    border: 1px solid red;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-left: 32px;
+  }
 }
 </style>
