@@ -1,8 +1,10 @@
 <template>
-  <div :class="$style.container" data-testid="mainViewContainer">
-    <CheckBoxes v-model="prefChecked" @update="(prefs) => updateChart(prefs)" />
-    <DisplayOptions v-model="display" />
-    <HighChart :data="compositionData" />
+  <div :class="$style.wrapper">
+    <div :class="$style.container" data-testid="mainViewContainer">
+      <CheckBoxes v-model="prefChecked" @update="(prefs) => updateChart(prefs)" />
+      <DisplayOptions v-model="display" />
+      <HighChart :data="compositionData" />
+    </div>
   </div>
 </template>
 
@@ -73,6 +75,21 @@ watch(display, () => {
 </script>
 
 <style module>
+.wrapper {
+  display: flex;
+  padding: 32px;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
 .container {
+  display: flex;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  align-self: stretch;
 }
 </style>
