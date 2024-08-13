@@ -17,6 +17,7 @@ const prefChecked = ref<Prefecture[]>([])
 const compositionData = ref<Composition[]>([])
 
 watch(prefChecked, (prefs) => {
+  compositionData.value = []
   prefs.forEach(async (pref) => {
     try {
       let comp: Composition = {
@@ -44,6 +45,7 @@ watch(prefChecked, (prefs) => {
       console.log('情報の取得は失敗した', err)
     }
   })
+  console.log(compositionData.value)
 })
 </script>
 
