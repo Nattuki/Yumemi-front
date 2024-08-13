@@ -33,9 +33,9 @@ watch(prefCodeChecked, (codes) => {
           }
         }
       )
-      compositionResponse.value = await res.json()
-      if (isCompositionResponse(compositionResponse)) {
-        return
+      const data = await res.json()
+      if (isCompositionResponse(data)) {
+        compositionResponse.value = data
       } else {
         throw new Error('CompositionResponseに満たさない型')
       }
