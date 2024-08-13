@@ -25,6 +25,8 @@ const display = ref<Display>('total')
 
 const updateChart = (prefs: Prefecture[]) => {
   compositionData.value = []
+
+  //都道府県ごとにリクエストを飛ばす
   prefs.forEach(async (pref) => {
     try {
       let comp: Composition = {
@@ -44,6 +46,13 @@ const updateChart = (prefs: Prefecture[]) => {
       )
       const compositionResponse = await res.json()
       if (isCompositionResponse(compositionResponse)) {
+        /* 
+          JSONの順番に一致する
+          0: 総人口
+          1:生産年齢人口
+          2:年少人口
+          3:老年人口
+        */
         switch (display.value) {
           case 'total':
             comp.info = compositionResponse.result.data[0]
@@ -70,6 +79,7 @@ const updateChart = (prefs: Prefecture[]) => {
   })
 }
 
+// 表示モードを切り替える度（別のボタンを押す時）にアップデート関数を呼び出す
 watch(display, () => {
   updateChart(prefChecked.value)
 })

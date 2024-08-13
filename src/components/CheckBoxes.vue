@@ -22,6 +22,7 @@ const emit = defineEmits(['update'])
 const prefChecked = defineModel<Prefecture[]>({ default: [] })
 const prefs = ref<Prefecture[]>([])
 
+//最初から全ての都道府県のコード・名前の情報を取り入れておく
 onMounted(async () => {
   try {
     const res = await fetch('https://opendata.resas-portal.go.jp/api/v1/prefectures', {

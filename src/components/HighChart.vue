@@ -13,6 +13,7 @@ const props = defineProps<{
   data: Composition[]
 }>()
 
+//渡されたデータを処理してHighChartsのoptionsに適した形式のデータを返す
 const seriesData = computed(() => {
   let res: ChartSeries[] = []
   props.data.forEach((data) => {
@@ -36,6 +37,7 @@ const categoriesData = computed(() => {
   return res
 })
 
+// HighChartsのoptionsのデータを作る
 const chartsOptions = ref({
   title: {
     text: '人口の推移'
