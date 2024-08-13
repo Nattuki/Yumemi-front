@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { isCompositionResponse } from '@/type/ResasApi'
 import DisplayOptions from '@/components/DisplayOptions.vue'
 import HighChart from '@/components/HighChart.vue'
