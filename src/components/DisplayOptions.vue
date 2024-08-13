@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.container">
+  <div :class="$style.container" data-testid="displayOptionsContainer">
     <RadioCard
       :class="$style.radioCard"
       v-model="display"

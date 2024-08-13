@@ -1,5 +1,5 @@
 <template>
-  <label>
+  <label data-testid="radioCardContainer">
     <input
       :class="$style.input"
       type="radio"
